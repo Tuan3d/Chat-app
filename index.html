@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat App - Ứng dụng nhắn tin</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dark-theme.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="dark-theme">
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-spinner"></div>
+        <p>Đang tải...</p>
+    </div>
+
+    <!-- Login/Register Screen -->
+    <div id="auth-screen" class="auth-screen">
+        <div class="auth-container">
+            <div class="auth-header">
+                <h1><i class="fas fa-comments"></i> Chat App</h1>
+                <p>Kết nối và trò chuyện với bạn bè</p>
+            </div>
+
+            <!-- Login Form -->
+            <div id="login-form" class="auth-form active">
+                <h2>Đăng nhập</h2>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="login-username">Tên đăng nhập hoặc ID:</label>
+                        <input type="text" id="login-username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Mật khẩu:</label>
+                        <input type="password" id="login-password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Đăng nhập</button>
+                </form>
+                <p class="auth-switch">
+                    Chưa có tài khoản? <a href="#" onclick="showRegister()">Đăng ký ngay</a>
+                </p>
+            </div>
+
+            <!-- Register Form -->
+            <div id="register-form" class="auth-form">
+                <h2>Đăng ký tài khoản</h2>
+                <form id="registerForm">
+                    <div class="form-group">
+                        <label for="register-username">Tên đăng nhập:</label>
+                        <input type="text" id="register-username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-custom-id">ID tùy chỉnh (tối đa 16 ký tự):</label>
+                        <input type="text" id="register-custom-id" maxlength="16" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-password">Mật khẩu:</label>
+                        <input type="password" id="register-password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Đăng ký</button>
+                </form>
+                <p class="auth-switch">
+                    Đã có tài khoản? <a href="#" onclick="showLogin()">Đăng nhập</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Chat App -->
+    <div id="chat-app" class="chat-app hidden">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <div class="user-info">
+                    <div class="user-avatar">
+                        <img id="user-avatar" src="https://via.placeholder.com/40" alt="Avatar">
+                    </div>
+                    <div class="user-details">
+                        <span id="user-name">Người dùng</span>
+                        <span id="user-id" class="user-id">@userid</span>
+                    </div>
+                </div>
+                <div class="sidebar-actions">
+                    <button class="btn-icon" onclick="toggleTheme()" title="Chuyển đổi chủ đề">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button class="btn-icon" onclick="logout()" title="Đăng xuất">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Navigation Tabs -->
+            <div class="nav-tabs">
+                <button class="nav-tab active" onclick="showTab('friends')">
+                    <i class="fas fa-users"></i> Bạn bè
+                </button>
+                <button class="nav-tab" onclick="showTab('groups')">
+                    <i class="fas fa-layer-group"></i> Nhóm
+                </button>
+                <button class="nav-tab" onclick="showTab('search')">
+                    <i class="fas fa-search"></i> Tìm kiếm
+                </button>
+            </div>
+
+            <!-- Friends Tab -->
+            <div id="friends-tab" class="tab-content active">
+                <div class="tab-header">
+                    <h3>Bạn bè</h3>
+                    <button class="btn-icon" onclick="loadFriends()" title="Làm mới">
+                        <i class="fas fa-sync-alt"></i>
+                    </button>
+                </div>
+                
+                <!-- Friend Requests -->
+                <div id="friend-requests" class="friend-requests">
+                    <h4>Yêu cầu kết bạn</h4>
+                    <div id="friend-requests-list"></div>
+                </div>
+
+                <!-- Friends List -->
+                <div id="friends-list" class="friends-list"></div>
+            </div>
+
+            <!-- Groups Tab -->
+            <div id="groups-tab" class="tab-content">
+                <div class="tab-header">
+                    <h3>Nhóm chat</h3>
+                    <button class="btn-icon" onclick="showCreateGroupModal()" title="Tạo nhóm">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                </div>
+                <div id="groups-list" class="groups-list"></div>
+            </div>
+
+            <!-- Search Tab -->
+            <div id="search-tab" class="tab-content">
+                <div class="tab-header">
+                    <h3>Tìm kiếm người dùng</h3>
+                </div>
+                <div class="search-form">
+                    <input type="text" id="search-input" placeholder="Nhập tên hoặc ID người dùng...">
+                    <button onclick="searchUsers()" class="btn btn-primary">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <div id="search-results" class="search-results"></div>
+            </div>
+        </div>
+
+        <!-- Chat Area -->
+        <div class="chat-area">
+            <div id="welcome-screen" class="welcome-screen">
+                <div class="welcome-content">
+                    <i class="fas fa-comments welcome-icon"></i>
+                    <h2>Chào mừng đến với Chat App!</h2>
+                    <p>Chọn một cuộc trò chuyện để bắt đầu nhắn tin</p>
+                </div>
+            </div>
+
+            <div id="chat-container" class="chat-container hidden">
+                <!-- Chat Header -->
+                <div class="chat-header">
+                    <div class="chat-info">
+                        <div class="chat-avatar">
+                            <img id="chat-avatar" src="https://via.placeholder.com/40" alt="Avatar">
+                        </div>
+                        <div class="chat-details">
+                            <span id="chat-name">Tên cuộc trò chuyện</span>
+                            <span id="chat-status" class="chat-status">Trực tuyến</span>
+                        </div>
+                    </div>
+                    <div class="chat-actions">
+                        <button class="btn-icon" onclick="closeChatContainer()" title="Đóng">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Messages Area -->
+                <div id="messages-area" class="messages-area"></div>
+
+                <!-- Message Input -->
+                <div class="message-input-area">
+                    <form id="messageForm" class="message-form">
+                        <input type="text" id="message-input" placeholder="Nhập tin nhắn..." required>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <!-- Avatar Upload Modal -->
+    <div id="avatar-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Thay đổi avatar</h3>
+                <button class="btn-close" onclick="closeModal('avatar-modal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="avatarForm" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="avatar-file">Chọn ảnh avatar:</label>
+                        <input type="file" id="avatar-file" accept="image/*" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Tải lên</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Create Group Modal -->
+    <div id="create-group-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Tạo nhóm chat</h3>
+                <button class="btn-close" onclick="closeModal('create-group-modal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="createGroupForm">
+                    <div class="form-group">
+                        <label for="group-name">Tên nhóm:</label>
+                        <input type="text" id="group-name" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Tạo nhóm</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div id="notification" class="notification"></div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/socket.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
+

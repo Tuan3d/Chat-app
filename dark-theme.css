@@ -1,0 +1,314 @@
+/* Dark Theme Styles */
+.dark-theme {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    color: #ecf0f1;
+}
+
+.dark-theme .auth-container {
+    background: #34495e;
+    color: #ecf0f1;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.dark-theme .auth-header h1 {
+    color: #3498db;
+}
+
+.dark-theme .auth-header p {
+    color: #bdc3c7;
+}
+
+.dark-theme .auth-form h2 {
+    color: #ecf0f1;
+}
+
+.dark-theme .form-group label {
+    color: #bdc3c7;
+}
+
+.dark-theme .form-group input {
+    background: #2c3e50;
+    border-color: #34495e;
+    color: #ecf0f1;
+}
+
+.dark-theme .form-group input:focus {
+    border-color: #3498db;
+}
+
+.dark-theme .auth-switch {
+    color: #bdc3c7;
+}
+
+.dark-theme .auth-switch a {
+    color: #3498db;
+}
+
+/* Chat App Dark Theme */
+.dark-theme .chat-app {
+    background: #2c3e50;
+}
+
+.dark-theme .sidebar {
+    background: #34495e;
+    border-right-color: #2c3e50;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.dark-theme .sidebar-header {
+    border-bottom-color: #2c3e50;
+}
+
+.dark-theme .user-details {
+    color: #ecf0f1;
+}
+
+.dark-theme .user-id {
+    color: #bdc3c7;
+}
+
+.dark-theme .btn-icon {
+    background: #2c3e50;
+    color: #bdc3c7;
+}
+
+.dark-theme .btn-icon:hover {
+    background: #1a252f;
+    color: #ecf0f1;
+}
+
+.dark-theme .nav-tabs {
+    border-bottom-color: #2c3e50;
+}
+
+.dark-theme .nav-tab {
+    color: #bdc3c7;
+}
+
+.dark-theme .nav-tab.active {
+    color: #3498db;
+    border-bottom-color: #3498db;
+    background: #2c3e50;
+}
+
+.dark-theme .nav-tab:hover {
+    background: #2c3e50;
+}
+
+.dark-theme .tab-header {
+    border-bottom-color: #2c3e50;
+}
+
+.dark-theme .tab-header h3 {
+    color: #ecf0f1;
+}
+
+.dark-theme .friend-requests {
+    border-bottom-color: #2c3e50;
+}
+
+.dark-theme .friend-requests h4 {
+    color: #ecf0f1;
+}
+
+.dark-theme .friend-request {
+    background: #2c3e50;
+}
+
+.dark-theme .friend-item:hover,
+.dark-theme .group-item:hover {
+    background: #2c3e50;
+}
+
+.dark-theme .friend-item.active,
+.dark-theme .group-item.active {
+    background: #3498db;
+    color: white;
+}
+
+.dark-theme .friend-avatar,
+.dark-theme .group-avatar {
+    background: #2c3e50;
+    color: #bdc3c7;
+}
+
+.dark-theme .friend-name,
+.dark-theme .group-name {
+    color: #ecf0f1;
+}
+
+.dark-theme .friend-status,
+.dark-theme .group-members {
+    color: #bdc3c7;
+}
+
+.dark-theme .search-form {
+    border-bottom-color: #2c3e50;
+}
+
+.dark-theme .search-form input {
+    background: #2c3e50;
+    border-color: #34495e;
+    color: #ecf0f1;
+}
+
+.dark-theme .search-form input::placeholder {
+    color: #7f8c8d;
+}
+
+.dark-theme .search-result {
+    background: #2c3e50;
+}
+
+.dark-theme .chat-area {
+    background: #2c3e50;
+}
+
+.dark-theme .welcome-content {
+    color: #bdc3c7;
+}
+
+.dark-theme .welcome-content h2 {
+    color: #ecf0f1;
+}
+
+.dark-theme .welcome-icon {
+    color: #3498db;
+}
+
+.dark-theme .chat-container {
+    background: #34495e;
+}
+
+.dark-theme .chat-header {
+    background: #34495e;
+    border-bottom-color: #2c3e50;
+}
+
+.dark-theme .chat-details {
+    color: #ecf0f1;
+}
+
+.dark-theme .chat-status {
+    color: #27ae60;
+}
+
+.dark-theme .messages-area {
+    background: #2c3e50;
+}
+
+.dark-theme .message-content {
+    background: #34495e;
+    color: #ecf0f1;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.dark-theme .message.own .message-content {
+    background: #3498db;
+    color: white;
+}
+
+.dark-theme .message-avatar {
+    background: #2c3e50;
+    color: #bdc3c7;
+}
+
+.dark-theme .message-time {
+    color: #7f8c8d;
+}
+
+.dark-theme .message-input-area {
+    background: #34495e;
+    border-top-color: #2c3e50;
+}
+
+.dark-theme .message-form input {
+    background: #2c3e50;
+    border-color: #34495e;
+    color: #ecf0f1;
+}
+
+.dark-theme .message-form input::placeholder {
+    color: #7f8c8d;
+}
+
+.dark-theme .message-form input:focus {
+    border-color: #3498db;
+}
+
+.dark-theme .message-form button {
+    background: #3498db;
+}
+
+.dark-theme .message-form button:hover {
+    background: #2980b9;
+}
+
+/* Modal Dark Theme */
+.dark-theme .modal-content {
+    background: #34495e;
+}
+
+.dark-theme .modal-header {
+    border-bottom-color: #2c3e50;
+}
+
+.dark-theme .modal-header h3 {
+    color: #ecf0f1;
+}
+
+.dark-theme .btn-close {
+    background: #2c3e50;
+    color: #bdc3c7;
+}
+
+.dark-theme .btn-close:hover {
+    background: #1a252f;
+    color: #ecf0f1;
+}
+
+/* Form elements in dark theme */
+.dark-theme .form-group input[type="file"] {
+    background: #2c3e50;
+    color: #ecf0f1;
+}
+
+.dark-theme .btn-primary {
+    background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+}
+
+.dark-theme .btn-primary:hover {
+    box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3);
+}
+
+.dark-theme .btn-success {
+    background: #27ae60;
+}
+
+.dark-theme .btn-danger {
+    background: #e74c3c;
+}
+
+/* Theme toggle icon */
+.dark-theme .fa-moon:before {
+    content: "\f185"; /* sun icon */
+}
+
+/* Scrollbar styling for dark theme */
+.dark-theme ::-webkit-scrollbar {
+    width: 8px;
+}
+
+.dark-theme ::-webkit-scrollbar-track {
+    background: #2c3e50;
+}
+
+.dark-theme ::-webkit-scrollbar-thumb {
+    background: #34495e;
+    border-radius: 4px;
+}
+
+.dark-theme ::-webkit-scrollbar-thumb:hover {
+    background: #4a6741;
+}
+
